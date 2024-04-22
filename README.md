@@ -1,18 +1,18 @@
-# Nome do projeto
+# Fake News
 
-Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
+Desenvolver um software que não apenas combata ativamente a disseminação de fake news, mas também promova a disseminação de informações precisas e confiáveis. Através de uma abordagem integrada e eficaz, almejamos fornecer ao povo brasileiro uma ferramenta que não só proteja contra os danos causados pelas informações falsas, mas também capacite os usuários a discernir entre conteúdo autêntico e enganoso.
 
 ## Alunos integrantes da equipe
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Caio César Pereira
+* Matheus Ferreira Noronha
+* Rian Zanini Lascasas de Gouvêia
+* Paulo Gabriel de Oliveira Leite
+* Vinicius Fernandes Soares Cardoso
 
 ## Professores responsáveis
 
-* Nome completo do professor 1
-* Nome completo do professor 2
+* Rommel Vieira Carneiro
 
 ## Instruções de utilização
 
