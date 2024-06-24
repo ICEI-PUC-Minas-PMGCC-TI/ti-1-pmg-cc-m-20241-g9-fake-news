@@ -13,6 +13,9 @@ Desenvolver um software que não apenas combata ativamente a disseminação de f
 ## Professores responsáveis
 
 * Rommel Vieira Carneiro
+* João Carlos Caetano
+* Luciana Mara
+* Pedro Henrique Ramos Costa
 
 ## Instruções de utilização
 
