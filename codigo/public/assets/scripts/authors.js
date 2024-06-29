@@ -1,24 +1,16 @@
+import { USERS_ENDPOINT } from '../utils/constants.js';
+import {
+  getEndpointData,
+  createEndpointData,
+  updateEndpointDataById,
+  deleteEndpointDataById,
+} from './api.js';
+import { createCustomElement } from '../utils/elements.js';
+
+
 const authorForm = document.getElementById("authorForm");
 const authorFormElements = authorForm.elements;
 const authorModal = document.getElementById("authorModal");
-
-function createCustomElement(elementType, classes = [], innerHTML, attributes = {}, customAttributes = {}) {
-  const createdElement = document.createElement(elementType);
-
-  createdElement.classList.add(...classes);
-
-  Object.entries(attributes).forEach(([attributeName, attributeValue]) => {
-    createdElement[attributeName] = attributeValue;
-  });
-
-  Object.entries(customAttributes).forEach(([attributeName, attributeValue]) => {
-    createdElement.setAttribute(attributeName, attributeValue);
-  });
-
-  if (innerHTML) createdElement.innerHTML = innerHTML;
-
-  return createdElement;
-}
 
 function fillFormWithAuthorData(authorData) {
   authorFormElements["id"].value = authorData.id;
@@ -74,7 +66,7 @@ function createAuthorCard(authorData) {
   });
 
   buttonDelete.addEventListener("click", () => {
-    deleteAuthor(authorData.id, loadAuthorData);
+    deleteEndpointDataById(USERS_ENDPOINT, authorData.id, loadAuthorData);
     authorForm.reset();
   });
 
@@ -118,13 +110,13 @@ function submitAuthor(event) {
 
   const actions = {
     create: () => {
-      createAuthor(formData, loadAuthorData);
+      createEndpointData(USERS_ENDPOINT, formData, loadAuthorData);
       authorForm.reset();
     },
     update: () => {
       const authorId = authorFormElements["id"].value;
 
-      updateAuthor(Number(authorId), formData, loadAuthorData);
+      updateEndpointDataById(USERS_ENDPOINT, Number(authorId), formData, loadAuthorData);
     },
   };
 
@@ -166,7 +158,7 @@ function loadAuthorData() {
 
   authorContainer.innerHTML = "";
 
-  getAuthors((authors) => {
+  getEndpointData(USERS_ENDPOINT, (authors) => {
     authors.forEach((author) => { authorContainer.append(createAuthorCard(author)) });
   });
 }

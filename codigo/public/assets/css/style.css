@@ -3,15 +3,7 @@ label {
 }
 
 h1 {
-   text-align: center;
-}
-
-.profile-image {
-  max-height: 200px;
-}
-
-.card {
-  border-top-right-radius: 0px;
+  text-align: center;
 }
 
 #msgContainer {
@@ -21,4 +13,10 @@ h1 {
 
 [disabled]:hover {
   cursor: not-allowed;
+}
+
+.modal-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
