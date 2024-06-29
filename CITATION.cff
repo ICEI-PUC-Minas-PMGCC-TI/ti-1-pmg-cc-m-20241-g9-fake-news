@@ -3,16 +3,16 @@ cff-version: 1.0.1
 message: Please cite this software using these metadata.
 title: 
 authors:
-  - family-names: Rian Zanini Lascasas de Gouvêia
+  - family-names: Zanini Lascasas de Gouvêia
     given-names: Rian
-  - family-names: Vinicius Fernandes Soares Cardoso
+  - family-names: Fernandes Soares Cardoso
     given-names: Vinicius
-  - family-names: Paulo Gabriel de Oliveira Leite
-    given-names: Paulo
-  - family-names: Caio César Pereira
-    given-names: Caio
-  - family-names: 
-    given-names: 
+  - family-names: Oliveira Leite
+    given-names: Paulo Gabriel
+  - family-names: Pereira
+    given-names: Caio César
+  - family-names: Ferreira Noronha
+    given-names: Matheus
   - family-names: 
     given-names:
   - name-suffix: Professor
