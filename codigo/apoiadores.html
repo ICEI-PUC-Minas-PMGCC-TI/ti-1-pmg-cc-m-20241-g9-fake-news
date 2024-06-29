@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Apoiador - Fato Certo</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Cadastrar Apoiador</h1>
+        <form id="supporter-form">
+            <div class="form-group">
+                <label for="name">Nome do Apoiador</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="link">Link Oficial do Apoiador</label>
+                <input type="url" class="form-control" id="link" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contato do Apoiador</label>
+                <input type="text" class="form-control" id="contact" required>
+            </div>
+            <div class="form-group">
+                <label for="startDate">Data de Início</label>
+                <input type="date" class="form-control" id="startDate" required>
+            </div>
+            <div class="form-group">
+                <label for="logo">Logo do Apoiador</label>
+                <input type="file" class="form-control-file" id="logo">
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+
+     <!-- Footer -->
+     <footer class="footer mt-5 py-3 bg-light text-center">
+        <div class="container">
+            <span class="text-muted">2024 Fato Certo - todos direitos reservados</span>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
