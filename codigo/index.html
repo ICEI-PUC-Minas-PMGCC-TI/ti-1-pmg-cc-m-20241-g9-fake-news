@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Notícias</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Listagem de Notícias</h1>
+    <div id="filters">
+        <input type="text" id="searchTitle" placeholder="Filtrar por título">
+        <select id="categoryFilter">
+            <option value="all">Todas as categorias</option>
+            <option value="clima">Clima</option>
+            <option value="politica">Política</option>
+            <option value="esportes">Esportes</option>
+            <option value="tecnologia">Tecnologia</option>
+        </select>
+    </div>
+    <div id="newsList">
+        <!-- As notícias serão carregadas aqui -->
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+const filters = {
+  "keywords": ["technology", "politics", "health", "environment"],
+  "locations": ["United States", "Europe", "Asia", "Africa"],
+  "sources": ["CNN", "BBC", "The New York Times", "The Guardian"],
+  "categories": ["World News", "Business", "Science", "Entertainment"]
+};
+
+document.getElementById('searchTitle').addEventListener('input', filterNews);
+document.getElementById('categoryFilter').addEventListener('change', filterNews);
+document.getElementById('locationFilter').addEventListener('change', filterNews);
+document.getElementById('sourceFilter').addEventListener('change', filterNews);
+
+function filterNews() {
+  const title = document.getElementById('searchTitle').value.toLowerCase();
+  const category = document.getElementById('categoryFilter').value;
+  const location = document.getElementById('locationFilter').value;
+  const source = document.getElementById('sourceFilter').value;
+
+  const newsItems = document.querySelectorAll('.news-item');
+
+  newsItems.forEach(item => {
+    const itemTitle = item.querySelector('h2').innerText.toLowerCase();
+    const itemCategory = item.getAttribute('data-category');
+    const itemLocation = item.getAttribute('data-location');
+    const itemSource = item.getAttribute('data-source');
+
+    const titleMatch = itemTitle.includes(title);
+    const categoryMatch = category === 'all'  itemCategory === category;
+    const locationMatch = location === 'all'  itemLocation === location;
+    const sourceMatch = source === 'all' || itemSource === source;
+
+    if (titleMatch && categoryMatch && locationMatch && sourceMatch) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+// Example function to load news items (replace with actual data fetching)
+function loadNews() {
+  const newsList = document.getElementById('newsList');
+  const newsData = [
+    { title: "Notícia 1", category: "World News", location: "Europe", source: "BBC" },
+    { title: "Notícia 2", category: "Business", location: "United States", source: "CNN" },
+    { title: "Notícia 3", category: "Science", location: "Asia", source: "The Guardian" },
+    { title: "Notícia 4", category: "Entertainment", location: "Africa", source: "The New York Times" },
+    // Add more news items here...
+  ];
+
+  newsData.forEach(news => {
+    const newsItem = document.createElement('div');
+    newsItem.className = 'news-item';
+    newsItem.setAttribute('data-category', news.category);
+    newsItem.setAttribute('data-location', news.location);
+    newsItem.setAttribute('data-source', news.source);
+    newsItem.innerHTML = <h2>${news.title}</h2><p>Categoria: ${news.category}</p><p>Localização: ${news.location}</p><p>Fonte: ${news.source}</p>;
+    newsList.appendChild(newsItem);
+  });
+}
+
+// Load news items on page load
+window.onload = loadNews;
