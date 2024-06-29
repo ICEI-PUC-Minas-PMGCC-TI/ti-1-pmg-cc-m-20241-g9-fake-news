@@ -1,0 +1,61 @@
+{
+  "news": [
+    {
+      "author": "BBC",
+      "title": "Idosos e conservadores são mais propensos a espalhar conteúdos falsos, diz estudo",
+      "subtitle": "Estudo revela comportamento de compartilhamento de fake news entre diferentes faixas etárias",
+      "image": "https://s2-g1.glbimg.com/JdPaDFBMteArGVPvqde1A-pfQjM=/0x0:1280x720/984x0/smart/filters:strip_icc()/s.glbimg.com/jo/g1/f/original/2018/12/08/download.jpg",
+      "description": "Estudo identificou que os usuários na faixa etária mais velha, acima dos 65 anos, compartilharam sete vezes mais artigos de portais de conteúdos falsos do que o grupo etário mais jovem (18 a 29 anos).",
+      "content": "<p>Um estudo apontou que pessoas com mais de 65 anos e politicamente conservadoras s&atilde;o mais propensas a divulgar na internet conte&uacute;dos falsos, tamb&eacute;m chamados de 'fake news'. O artigo &ndash; assinado por Andrew Guess, da Universidade Princeton, e Jonathan Nagler e Joshua Tucker, da Universidade de Nova York (NYU), ambas nos EUA &ndash; foi publicado pela revista cient&iacute;fica Science Advances na quarta-feira (9). Nele, os autores analisaram as publica&ccedil;&otilde;es de um grupo de usu&aacute;rios do Facebook durante a campanha presidencial americana, em 2016. A pesquisa concluiu que, de forma geral, o 'compartilhamento de artigos de sites de conte&uacute;dos falsos foi uma atividade rara'. 'A ampla maioria dos usu&aacute;rios do Facebook no nosso banco de dados (91,5%) n&atilde;o divulgou nenhum artigo de portais de conte&uacute;dos falsos em 2016', dizem os autores. Influ&ecirc;ncia de 'fake news' em elei&ccedil;&otilde;es A elei&ccedil;&atilde;o de Trump &ndash; assim como a de Jair Bolsonaro (PSL) no Brasil &ndash; foi marcada por discuss&otilde;es sobre a poss&iacute;vel...</p>",
+      "featured": true,
+      "tags": [
+        "fake news",
+        "redes sociais",
+        "política"
+      ],
+      "fake": true,
+      "views": "1386",
+      "createdAt": "12/01/2019 12:27:57",
+      "updatedAt": "19/05/2024 20:46:46",
+      "id": 1
+    },
+    {
+      "author": "The Guardian",
+      "title": "Mudanças climáticas: ursos polares podem se extinguir mais rápido do que se pensava, diz estudo",
+      "subtitle": "Nova pesquisa sobre populações de ursos polares e impactos das mudanças climáticas",
+      "image": "https://i.guim.co.uk/img/media/fdd4d6106dd0b6653e4ca0168472df3cb6455bd4/0_62_5472_3283/5472.jpg?width=460&quality=85&auto=format&fit=max&s=c842933e689461acb86800b6f094d8a6",
+      "description": "Um estudo recente indica que os ursos polares estão em maior risco de extinção devido ao derretimento acelerado do gelo do Ártico.",
+      "content": "<p>Os ursos polares enfrentam um risco muito maior de extin&ccedil;&atilde;o devido ao derretimento acelerado do gelo do &Aacute;rtico, de acordo com um estudo publicado na revista Nature Climate Change. A pesquisa, conduzida por cientistas da Universidade de Toronto e do Instituto Polar Noruegu&ecirc;s, sugere que a popula&ccedil;&atilde;o de ursos polares poderia declinar drasticamente at&eacute; a metade do s&eacute;culo se as tend&ecirc;ncias atuais continuarem. A perda de seu habitat de gelo marinho est&aacute; for&ccedil;ando os ursos polares a percorrerem dist&acirc;ncias maiores em busca de alimento, levando ao aumento das taxas de mortalidade. 'Se n&atilde;o tomarmos a&ccedil;&otilde;es significativas para combater as mudan&ccedil;as clim&aacute;ticas, poderemos ver o desaparecimento dos ursos polares do &Aacute;rtico at&eacute; 2050,' disse o autor principal, Peter Molnar.</p>",
+      "featured": false,
+      "tags": [
+        "meio ambiente",
+        "vida selvagem",
+        "mudanças climáticas"
+      ],
+      "fake": false,
+      "views": "2547",
+      "createdAt": "15/02/2020 10:15:00",
+      "updatedAt": "19/05/2024 20:44:11",
+      "id": 2
+    },
+    {
+      "author": "Reuters",
+      "title": "Número global de mortes por COVID-19 ultrapassa 3 milhões enquanto esforços de vacinação continuam",
+      "subtitle": "Um marco na pandemia em curso e nas campanhas globais de vacinação",
+      "image": "https://static.srpcdigital.com/styles/1037xauto/public/2021/04/06/commuters_wearing_masks_due_to_the_covid-19_pandemic_crowd_a_public_rapid_transit_bus_brt_in_rio_de_janeiro_brazil_tuesday_march_30_2021._ap.jpg",
+      "description": "O número global de mortes por COVID-19 ultrapassou 3 milhões, segundo contagem da Reuters, em meio aos esforços contínuos de vacinação em todo o mundo.",
+      "content": "<p>O n&uacute;mero global de mortes por COVID-19 ultrapassou 3 milh&otilde;es, de acordo com uma contagem da Reuters. Esse marco ocorre enquanto as campanhas de vacina&ccedil;&atilde;o continuam a aumentar em todo o mundo. Apesar do progresso na distribui&ccedil;&atilde;o de vacinas, v&aacute;rios pa&iacute;ses est&atilde;o enfrentando novos surtos de casos, destacando os desafios que permanecem no controle da pandemia. A Organiza&ccedil;&atilde;o Mundial da Sa&uacute;de (OMS) tem instado os pa&iacute;ses a permanecerem vigilantes e continuarem com medidas de sa&uacute;de p&uacute;blica, como uso de m&aacute;scaras e distanciamento social. 'A vacina&ccedil;&atilde;o &eacute; cr&iacute;tica, mas n&atilde;o &eacute; uma bala de prata,' disse o Diretor-Geral da OMS, Tedros Adhanom Ghebreyesus. 'Devemos continuar a usar todas as ferramentas dispon&iacute;veis para suprimir a transmiss&atilde;o e salvar vidas.'</p>",
+      "featured": true,
+      "tags": [
+        "COVID-19",
+        "saúde",
+        "vacinação"
+      ],
+      "fake": false,
+      "views": "3214",
+      "createdAt": "17/04/2021 08:30:45",
+      "updatedAt": "19/05/2024 20:45:39",
+      "id": 3
+    }
+  ]
+}
