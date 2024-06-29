@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .news-card {
+            background-color: #fff;
+            width: 23%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .news-card:hover {
+            transform: scale(1.05);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 150px;
+            background-color: #ddd;
+        }
+
+        .news-content {
+            padding: 15px;
+        }
+
+        .news-title {
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+
+        .news-description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .search-bar {
+            width: 50%;
+            margin: 20px auto;
+            display: flex;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>News Catalog</h1>
+    </div>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for news..." onkeyup="searchNews()">
+    </div>
+    <div class="container" id="newsContainer">
+        <div class="news-card">
+            <div class="news-image"></div>
+            <div class="news-content">
+                <h2 class="news-title">News Title 1</h2>
+                <p class="news-description">This is a placeholder for the description of the news article 1.</p>
+            </div>
+        </div>
+        <div class="news-card">
+            <div class="news-image"></div>
+            <div class="news-content">
+                <h2 class="news-title">News Title 2</h2>
+                <p class="news-description">This is a placeholder for the description of the news article 2.</p>
+            </div>
+        </div>
+        <div class="news-card">
+            <div class="news-image"></div>
+            <div class="news-content">
+                <h2 class="news-title">News Title 3</h2>
+                <p class="news-description">This is a placeholder for the description of the news article 3.</p>
+            </div>
+        </div>
+        <div class="news-card">
+            <div class="news-image"></div>
+            <div class="news-content">
+                <h2 class="news-title">News Title 4</h2>
+                <p class="news-description">This is a placeholder for the description of the news article 4.</p>
+            </div>
+        </div>
+        <!-- Add more news cards as needed -->
+    </div>
+    <script>
+        function searchNews() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let newsCards = document.getElementsByClassName('news-card');
+            Array.from(newsCards).forEach(card => {
+                let title = card.getElementsByClassName('news-title')[0].innerText.toLowerCase();
+                let description = card.getElementsByClassName('news-description')[0].innerText.toLowerCase();
+                if (title.includes(input) || description.includes(input)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
