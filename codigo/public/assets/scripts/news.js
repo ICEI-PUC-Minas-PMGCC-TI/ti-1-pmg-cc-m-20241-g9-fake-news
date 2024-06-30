@@ -35,7 +35,7 @@ function createNewsCard(newsData) {
 
   // Card Image Div
   const divCardImage = createCustomElement("div", ["col-md-4"]);
-  const imgNews = createCustomElement("img", ["img-fluid", "rounded-start", "h-100", "w-100"], null, { src: newsData.image, alt: `Imagem de ${newsData.title}` });
+  const imgNews = createCustomElement("img", ["img-fluid", "rounded-start", "h-100", "w-100"], undefined, { src: newsData.image, alt: `Imagem de ${newsData.title}` });
 
   // Card Text Div
   const divCardText = createCustomElement("div", ["col-md-8"]);
@@ -47,7 +47,7 @@ function createNewsCard(newsData) {
   const spanNewsDateDivider = createCustomElement("span", ["flex-grow-1", "mx-5", "border-bottom", "border-black"]);
   const smallNewsUpdateDate = createCustomElement("small", ["text-body-secondary"], `Atualizado em: ${newsData.updatedAt} por ${newsData.author.name}`);
   const divCategoryTags = createCustomElement("div", ["col-sm-12", "d-flex", "flex-wrap", "gap-2"]);
-  const divButtonGroup = createCustomElement("div", ["btn-group"], null, { role: "group" });
+  const divButtonGroup = createCustomElement("div", ["btn-group"], undefined, { role: "group" });
   const buttonEdit = createCustomElement("button", ["btn", "btn-primary"], "Editar", { type: "button" }, { "data-bs-toggle": "modal", "data-bs-target": "#newsModal", "data-action-type": "update" });
   const buttonDelete = createCustomElement("button", ["btn", "btn-danger"], "Excluir", { type: "button" });
 
