@@ -1,4 +1,48 @@
 {
+  "authors": [
+    {
+      "name": "Ana Clara Martins",
+      "birthDate": "1988-01-12",
+      "occupation": "Jornalista investigativa",
+      "description": "Desde que comecei minha carreira em um pequeno jornal local, sempre fui movida pela paixão por descobrir a verdade por trás dos fatos. Com 32 anos e uma década de experiência, ganhei reconhecimento por minhas reportagens sobre corrupção e crimes de colarinho branco. Tenho um olhar atento e uma determinação inabalável, o que me leva a buscar informações exclusivas e fazer justiça através das minhas matérias. Nos momentos de folga, gosto de ler livros de não-ficção e participar de debates sobre ética jornalística.",
+      "image": "https://media.gettyimages.com/id/967373506/pt/foto/portrait-de-le%C3%AFla-slimani-journaliste-et-%C3%A9crivain-franco-marocaine-laur%C3%A9ate-du-prix-goncourt.jpg?s=612x612&w=0&k=20&c=7zzSQp8rhDTtdp7lnyxs4jtVczkHuzMe4zlIODo1uus=",
+      "email": "clarAnaMartins@gmail.com",
+      "password": "{\"salt\":\"bUXIJhkmZSHyDtVikrUN0w==\",\"iv\":\"XevB0PYCpcZ92P6Z\",\"cipher\":\"TBwwPr1LmSrtWztcMMvIU8RvTaseCXfrtwW6Aw==\"}",
+      "accessLevel": 2,
+      "id": 1
+    },
+    {
+      "name": "Pedro Henrique Souza",
+      "birthDate": "1965-06-16",
+      "occupation": "Correspondente político",
+      "description": "Com uma vasta rede de contatos e uma compreensão profunda dos meandros da política brasileira, meu trabalho como correspondente político é marcado pela precisão e imparcialidade. Ao longo de 20 anos de carreira, tenho fornecido análises detalhadas e comentários perspicazes que ajudam o público a entender as complexidades do cenário político nacional. Respeitado tanto por colegas quanto por figuras políticas, meu compromisso com a verdade e a transparência é inabalável. Fora do trabalho, adoro jogar xadrez e caminhar no parque com minha família.",
+      "image": "https://media.gettyimages.com/id/99860818/pt/foto/turin-italy-the-singer-of-the-group-maumau-and-journalist-luca-morino-poses-for-a-portraits.jpg?s=612x612&w=0&k=20&c=aY6qJeB3152N_bf61JhklDNp4hG86JIVJezJ1Fdo7vg=",
+      "email": "pedroHSouza@gmail.com",
+      "password": "{\"salt\":\"3fqk1qp+D8jWzXgdJ+kh4Q==\",\"iv\":\"RBXedLtszCBOo1rb\",\"cipher\":\"A0az8HAC0U3KYt1yDq4it5Xugu6LONhIiM9aPA==\"}",
+      "accessLevel": 2,
+      "id": 2
+    },
+    {
+      "name": "Bianca Oliveira",
+      "birthDate": "1979-01-21",
+      "occupation": "Repórter de entretenimento",
+      "description": "Meu fascínio pelo glamour e o dinamismo da indústria do entretenimento me levou a seguir uma carreira como repórter de entretenimento. Aos 27 anos, sou conhecida por minhas entrevistas cativantes e minha habilidade de me conectar com as celebridades, extraindo informações interessantes e exclusivas. Além de escrever para uma revista famosa, mantenho um blog popular e sou ativa nas redes sociais, interagindo constantemente com meus seguidores. Nos momentos de folga, adoro assistir séries, ir a shows e experimentar novos restaurantes na cidade.",
+      "image": "https://media.gettyimages.com/id/996776442/pt/foto/british-writer-lady-caroline-blackwood-at-petes-tavern-in-manhattan-new-york-city-circa-1955.jpg?s=612x612&w=0&k=20&c=lPlHMHEky0sQQ4pJ3XIt0XEoaN9XGienzN8RRy460vY=",
+      "email": "biancaOliv@gmail.com",
+      "password": "{\"salt\":\"wESVMzU+nfC5WrdJtnTjZw==\",\"iv\":\"/Dqiv6I722Kb6SeQ\",\"cipher\":\"biUFlJqrQp2wAJeV4fWWZV7OHoTf5ilKC+pr6A==\"}",
+      "accessLevel": 2,
+      "id": 3
+    }
+  ],
+  "managers": [
+    {
+      "id": 1,
+      "accessLevel": 0,
+      "name": "Caio César Pereira",
+      "email": "ccpereira0498@gmail.com",
+      "password": "{\"salt\":\"tCDxZPc6zS7ubwV9uS1EOA==\",\"iv\":\"GaGyJonQkGWsw3mz\",\"cipher\":\"js4bjze+cxvyJFmvcbscvra94SEQ2yl/hnjVpw==\"}"
+    }
+  ],
   "news": [
     {
       "author": "BBC",

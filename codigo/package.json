@@ -1,10 +1,10 @@
 {
-  "name": "lab-jsonserver",
+  "name": "fato-certo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "json-server --watch ./db/db.json -s ./public/app_news"
+    "start": "json-server --watch ./db/db.json -s ./public"
   },
   "keywords": [],
   "author": "Caio César Pereira",
