@@ -1,4 +1,4 @@
-import { USERS_ENDPOINT } from '../utils/constants.js';
+import { AUTHORS_ENDPOINT } from '../utils/constants.js';
 import {
   getEndpointData,
   createEndpointData,
@@ -6,32 +6,24 @@ import {
   deleteEndpointDataById,
 } from './api.js';
 import { createCustomElement } from '../utils/elements.js';
+import { decrypt, encrypt } from '../utils/encryption.js';
+import { getAge } from '../utils/utility.js';
+import { redirectUnauthorized } from './login.js';
 
 
 const authorForm = document.getElementById("authorForm");
 const authorFormElements = authorForm.elements;
 const authorModal = document.getElementById("authorModal");
 
-function fillFormWithAuthorData(authorData) {
+async function fillFormWithAuthorData(authorData) {
   authorFormElements["id"].value = authorData.id;
   authorFormElements["name"].value = authorData.name;
   authorFormElements["birthDate"].value = authorData.birthDate;
   authorFormElements["occupation"].value = authorData.occupation;
-  authorFormElements["education"].value = authorData.education;
-  authorFormElements["experience"].value = authorData.experience;
   authorFormElements["description"].value = authorData.description;
   authorFormElements["image"].value = authorData.image;
-}
-
-//Créditos: https://stackoverflow.com/questions/4060004/calculate-age-given-the-birth-date-in-the-format-yyyymmdd/7091965#7091965
-
-function getAge(dateString) {
-  const today = new Date();
-  const birthDate = new Date(dateString);
-  const age = today.getFullYear() - birthDate.getFullYear();
-  const monthDifference = today.getMonth() - birthDate.getMonth();
-
-  return monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate()) ? age - 1 : age;
+  authorFormElements["email"].value = authorData.email;
+  authorFormElements["password"].value = await decrypt(JSON.parse(authorData.password));
 }
 
 function createAuthorCard(authorData) {
@@ -52,21 +44,20 @@ function createAuthorCard(authorData) {
   const ulAuthorData = createCustomElement("ul", ["list-unstyled"]);
   const liAuthorAge = createCustomElement("li", undefined, `<b>Idade:</b> ${getAge(authorData.birthDate)} anos`);
   const liAuthorOccupation = createCustomElement("li", undefined, `<b>Ocupação:</b> ${authorData.occupation}`);
-  const liAuthorEducation = createCustomElement("li", undefined, `<b>Formação:</b> ${authorData.education}`);
-  const liAuthorExperience = createCustomElement("li", undefined, `<b>Experiência de trabalho:</b> Há ${authorData.experience} no mercado`);
+  const liAuthorEmail = createCustomElement("li", undefined, `<b>Email:</b> ${authorData.email}`);
   const pAuthorDescription = createCustomElement("p", ["card-text"], authorData.description);
   const divButtonGroup = createCustomElement("div", ["btn-group"], null, { role: "group" });
   const buttonEdit = createCustomElement("button", ["btn", "btn-primary"], "Editar", { type: "button" }, { "data-bs-toggle": "modal", "data-bs-target": "#authorModal", "data-action-type": "update" });
   const buttonDelete = createCustomElement("button", ["btn", "btn-danger"], "Excluir", { type: "button" });
 
   // Events
-  buttonEdit.addEventListener("click", () => {
+  buttonEdit.addEventListener("click", async () => {
     authorForm.reset();
-    fillFormWithAuthorData(authorData);
+    await fillFormWithAuthorData(authorData);
   });
 
   buttonDelete.addEventListener("click", () => {
-    deleteEndpointDataById(USERS_ENDPOINT, authorData.id, loadAuthorData);
+    deleteEndpointDataById(AUTHORS_ENDPOINT, authorData.id, loadAuthorData);
     authorForm.reset();
   });
 
@@ -87,9 +78,7 @@ function createAuthorCard(authorData) {
 
   ulAuthorData.append(liAuthorAge);
   ulAuthorData.append(liAuthorOccupation);
-  ulAuthorData.append(liAuthorEducation);
-  ulAuthorData.append(liAuthorExperience);
-
+  ulAuthorData.append(liAuthorEmail);
 
   divButtonGroup.append(buttonEdit);
   divButtonGroup.append(buttonDelete);
@@ -97,7 +86,7 @@ function createAuthorCard(authorData) {
   return divCard;
 }
 
-function submitAuthor(event) {
+async function submitAuthor(event) {
   event.preventDefault();
 
   if (!authorForm.checkValidity()) {
@@ -105,18 +94,19 @@ function submitAuthor(event) {
     return;
   }
 
-  const formData = getFormData();
+  const formData = { ...getFormData(), accessLevel: 2 };
+  formData.password = JSON.stringify(await encrypt(formData.password));
   const actionType = authorFormElements["submit"].getAttribute("data-action-type");
 
   const actions = {
     create: () => {
-      createEndpointData(USERS_ENDPOINT, formData, loadAuthorData);
+      createEndpointData(AUTHORS_ENDPOINT, formData, loadAuthorData);
       authorForm.reset();
     },
     update: () => {
       const authorId = authorFormElements["id"].value;
 
-      updateEndpointDataById(USERS_ENDPOINT, Number(authorId), formData, loadAuthorData);
+      updateEndpointDataById(AUTHORS_ENDPOINT, Number(authorId), formData, loadAuthorData);
     },
   };
 
@@ -147,10 +137,10 @@ const getFormData = () => ({
   name: authorFormElements["name"].value,
   birthDate: authorFormElements["birthDate"].value,
   occupation: authorFormElements["occupation"].value,
-  education: authorFormElements["education"].value,
-  experience: authorFormElements["experience"].value,
   description: authorFormElements["description"].value,
   image: authorFormElements["image"].value,
+  email: authorFormElements["email"].value,
+  password: authorFormElements["password"].value,
 });
 
 function loadAuthorData() {
@@ -158,7 +148,7 @@ function loadAuthorData() {
 
   authorContainer.innerHTML = "";
 
-  getEndpointData(USERS_ENDPOINT, (authors) => {
+  getEndpointData(AUTHORS_ENDPOINT, (authors) => {
     authors.forEach((author) => { authorContainer.append(createAuthorCard(author)) });
   });
 }
@@ -172,5 +162,6 @@ function init() {
 }
 
 window.onload = () => {
+  redirectUnauthorized(1);
   init();
 };
