@@ -1,7 +1,7 @@
 // Página inicial de Login
 import { AUTHORS_ENDPOINT, MANAGERS_ENDPOINT } from '../utils/constants.js';
 import { displayMessage } from '../utils/elements.js';
-import { decrypt } from '../utils/encryption.js';
+import { decrypt, encrypt } from '../utils/encryption.js';
 
 async function isUserValid({ email, password }) {
     try {
@@ -27,7 +27,7 @@ async function checkUserPassword(users, password) {
 
         if (decryptedPassword === password) {
             delete users[i].password;
-            sessionStorage.setItem('user', JSON.stringify(users[i]));
+            sessionStorage.setItem('user', JSON.stringify(await encrypt(JSON.stringify(users[i]))));
             return true;
         }
     }
@@ -42,24 +42,38 @@ async function login(event) {
     };
 
     if (await isUserValid(userCredentials)) {
-        window.location = "index.html";
+        window.location = "news.html";
     } else {
         // Se login falhou, avisa ao usuário
         alert("Usuário ou senha incorretos");
     }
 }
 
-// Associa a funçao processaFormLogin  formulário adicionado um manipulador do evento submit
-document
-    .getElementById("login-form")
-    ?.addEventListener("submit", login);
-
 export function logoutUser() {
     sessionStorage.setItem('user', JSON.stringify({}));
     window.location = "index.html";
 }
 
-export function redirectUnauthorized(minimumAccessLevel) {
-    const hasUser = JSON.parse(sessionStorage.getItem('user'));
-    if (!hasUser || minimumAccessLevel <= hasUser?.accessLevel) window.location = "index.html";
+export async function redirectUnauthorized(minimumAccessLevel) {
+    const hasEncryptedUser = JSON.parse(sessionStorage.getItem('user')) ?? {};
+
+    if (Object.keys(hasEncryptedUser).length === 0) {
+        window.location = "login.html";
+        return;
+    }
+
+    const user = JSON.parse(await decrypt(hasEncryptedUser));
+
+    if (minimumAccessLevel < user.accessLevel) {
+        window.location = "login.html";
+        return;
+    }
+
+    return user;
+}
+
+// Associa a funçao processaFormLogin  formulário adicionado um manipulador do evento submit
+window.onload = () => {
+    document.getElementById("login-form")
+            .addEventListener("submit", login);
 }
