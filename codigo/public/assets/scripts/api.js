@@ -44,13 +44,13 @@ export function createEndpointData(endpoint, data, dataRenderer, customMessage) 
         });
 }
 
-export function updateEndpointDataById(endpoint, id, author, dataRenderer, customMessage) {
+export function updateEndpointDataById(endpoint, id, data, dataRenderer, customMessage) {
     fetch(`${endpoint}/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(author),
+        body: JSON.stringify(data),
     })
         .then(response => response.json())
         .then(_ => {

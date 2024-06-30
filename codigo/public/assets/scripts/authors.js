@@ -7,7 +7,7 @@ import {
 } from './api.js';
 import { createCustomElement } from '../utils/elements.js';
 import { decrypt, encrypt } from '../utils/encryption.js';
-import { getAge } from '../utils/utility.js';
+import { getAgeFromDate } from '../utils/utility.js';
 import { redirectUnauthorized } from './login.js';
 
 
@@ -42,7 +42,7 @@ function createAuthorCard(authorData) {
   const divCardBody = createCustomElement("div", ["card-body", "d-flex", "flex-column", "gap-2"]);
   const h5AuthorName = createCustomElement("h5", ["card-title"], authorData.name);
   const ulAuthorData = createCustomElement("ul", ["list-unstyled"]);
-  const liAuthorAge = createCustomElement("li", undefined, `<b>Idade:</b> ${getAge(authorData.birthDate)} anos`);
+  const liAuthorAge = createCustomElement("li", undefined, `<b>Idade:</b> ${getAgeFromDate(authorData.birthDate)} anos`);
   const liAuthorOccupation = createCustomElement("li", undefined, `<b>Ocupação:</b> ${authorData.occupation}`);
   const liAuthorEmail = createCustomElement("li", undefined, `<b>Email:</b> ${authorData.email}`);
   const pAuthorDescription = createCustomElement("p", ["card-text"], authorData.description);
