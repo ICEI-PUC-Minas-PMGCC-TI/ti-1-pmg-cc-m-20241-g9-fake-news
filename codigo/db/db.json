@@ -45,7 +45,7 @@
   ],
   "news": [
     {
-      "author": "BBC",
+      "authorId": 1,
       "title": "Idosos e conservadores são mais propensos a espalhar conteúdos falsos, diz estudo",
       "subtitle": "Estudo revela comportamento de compartilhamento de fake news entre diferentes faixas etárias",
       "image": "https://s2-g1.glbimg.com/JdPaDFBMteArGVPvqde1A-pfQjM=/0x0:1280x720/984x0/smart/filters:strip_icc()/s.glbimg.com/jo/g1/f/original/2018/12/08/download.jpg",
@@ -59,12 +59,12 @@
       ],
       "fake": true,
       "views": "1386",
-      "createdAt": "12/01/2019 12:27:57",
-      "updatedAt": "19/05/2024 20:46:46",
+      "createdAt": "2019-01-19 12:27:57",
+      "updatedAt": "2024-05-12 20:46:46",
       "id": 1
     },
     {
-      "author": "The Guardian",
+      "authorId": 2,
       "title": "Mudanças climáticas: ursos polares podem se extinguir mais rápido do que se pensava, diz estudo",
       "subtitle": "Nova pesquisa sobre populações de ursos polares e impactos das mudanças climáticas",
       "image": "https://i.guim.co.uk/img/media/fdd4d6106dd0b6653e4ca0168472df3cb6455bd4/0_62_5472_3283/5472.jpg?width=460&quality=85&auto=format&fit=max&s=c842933e689461acb86800b6f094d8a6",
@@ -78,12 +78,12 @@
       ],
       "fake": false,
       "views": "2547",
-      "createdAt": "15/02/2020 10:15:00",
-      "updatedAt": "19/05/2024 20:44:11",
+      "createdAt": "2020-02-19 10:15:00",
+      "updatedAt": "2024-05-15 20:44:11",
       "id": 2
     },
     {
-      "author": "Reuters",
+      "authorId": 3,
       "title": "Número global de mortes por COVID-19 ultrapassa 3 milhões enquanto esforços de vacinação continuam",
       "subtitle": "Um marco na pandemia em curso e nas campanhas globais de vacinação",
       "image": "https://static.srpcdigital.com/styles/1037xauto/public/2021/04/06/commuters_wearing_masks_due_to_the_covid-19_pandemic_crowd_a_public_rapid_transit_bus_brt_in_rio_de_janeiro_brazil_tuesday_march_30_2021._ap.jpg",
@@ -97,8 +97,8 @@
       ],
       "fake": false,
       "views": "3214",
-      "createdAt": "17/04/2021 08:30:45",
-      "updatedAt": "19/05/2024 20:45:39",
+      "createdAt": "2021-04-19 08:30:45",
+      "updatedAt": "2024-05-17 20:45:39",
       "id": 3
     }
   ]

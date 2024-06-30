@@ -8,3 +8,7 @@ export function getAgeFromDate(dateString) {
 
   return monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate()) ? age - 1 : age;
 }
+
+export function getDateTime(date = new Date()) {
+  return `${date.toISOString().split('T')[0]} ${date.toTimeString().split(' ')[0]}`;
+}

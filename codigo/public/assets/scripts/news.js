@@ -1,31 +1,20 @@
+import { AUTHOR_ACCESS_LEVEL, MANAGER_ACCESS_LEVEL, NEWS_ENDPOINT } from '../utils/constants.js';
+import { createCustomElement } from '../utils/elements.js';
+import { getDateTime } from '../utils/utility.js';
+import { createEndpointData, deleteEndpointDataById, getEndpointData, updateEndpointDataById } from './api.js';
+import { redirectUnauthorized } from './login.js';
+
+let user = {};
 const newsForm = document.getElementById("newsForm");
 const newsFormElements = newsForm.elements;
 const newsModal = document.getElementById("newsModal");
-
-function createCustomElement(elementType, classes, innerText, attributes = {}, customAttributes = {}) {
-  const createdElement = document.createElement(elementType);
-
-  createdElement.classList.add(...classes);
-
-  Object.entries(attributes).forEach(([attributeName, attributeValue]) => {
-    createdElement[attributeName] = attributeValue;
-  });
-
-  Object.entries(customAttributes).forEach(([attributeName, attributeValue]) => {
-    createdElement.setAttribute(attributeName, attributeValue);
-  });
-
-  if (innerText) createdElement.innerText = innerText;
-
-  return createdElement;
-}
 
 function fillFormWithNewsData(newsData) {
   newsFormElements["id"].value = newsData.id;
   newsFormElements["views"].value = newsData.views;
   newsFormElements["createdAt"].value = newsData.createdAt;
   newsFormElements["updatedAt"].value = newsData.updatedAt;
-  newsFormElements["author"].value = newsData.author;
+  newsFormElements["author"].value = newsData.author.id;
   newsFormElements["title"].value = newsData.title;
   newsFormElements["subtitle"].value = newsData.subtitle;
   newsFormElements["image"].value = newsData.image;
@@ -54,9 +43,9 @@ function createNewsCard(newsData) {
   const h5NewsTitle = createCustomElement("h5", ["card-title"], newsData.title);
   const pNewsDescription = createCustomElement("p", ["card-text"], newsData.description);
   const pNewsDates = createCustomElement("p", ["card-text", "d-flex", "align-items-center"]);
-  const smallNewsCreationDate = createCustomElement("small", ["text-body-secondary"], `Criado em: ${newsData.createdAt} por ${newsData.author}`);
+  const smallNewsCreationDate = createCustomElement("small", ["text-body-secondary"], `Criado em: ${newsData.createdAt} por ${newsData.author.name}`);
   const spanNewsDateDivider = createCustomElement("span", ["flex-grow-1", "mx-5", "border-bottom", "border-black"]);
-  const smallNewsUpdateDate = createCustomElement("small", ["text-body-secondary"], `Atualizado em: ${newsData.updatedAt} por ${newsData.author}`);
+  const smallNewsUpdateDate = createCustomElement("small", ["text-body-secondary"], `Atualizado em: ${newsData.updatedAt} por ${newsData.author.name}`);
   const divCategoryTags = createCustomElement("div", ["col-sm-12", "d-flex", "flex-wrap", "gap-2"]);
   const divButtonGroup = createCustomElement("div", ["btn-group"], null, { role: "group" });
   const buttonEdit = createCustomElement("button", ["btn", "btn-primary"], "Editar", { type: "button" }, { "data-bs-toggle": "modal", "data-bs-target": "#newsModal", "data-action-type": "update" });
@@ -81,18 +70,18 @@ function createNewsCard(newsData) {
     spanFeaturedTag.prepend(iFireIcon);
     divCustomTags.append(spanFeaturedTag);
   }
-  
+
   const spanViewsTag = createCustomElement("span", ["custom-tags", "bg-dark", "border", "border-dark"], ` ${newsData.views}`);
   const iEyeIcon = createCustomElement("i", ["bi", "bi-eye-fill"]);
-  
+
   // Events
   buttonEdit.addEventListener("click", () => {
     newsForm.reset();
     fillFormWithNewsData(newsData);
   });
-  
+
   buttonDelete.addEventListener("click", () => {
-    deleteNews(newsData.id, loadNewsData);
+    deleteEndpointDataById(NEWS_ENDPOINT, newsData.id, loadNewsData);
     newsForm.reset();
   });
 
@@ -117,8 +106,10 @@ function createNewsCard(newsData) {
   pNewsDates.append(spanNewsDateDivider);
   pNewsDates.append(smallNewsUpdateDate);
 
-  divButtonGroup.append(buttonEdit);
-  divButtonGroup.append(buttonDelete);
+  if(user.accessLevel < AUTHOR_ACCESS_LEVEL || (user.accessLevel === AUTHOR_ACCESS_LEVEL && user.id === newsData.author.id)) {
+    divButtonGroup.append(buttonEdit);
+    divButtonGroup.append(buttonDelete);
+  }
 
   spanViewsTag.prepend(iEyeIcon);
 
@@ -141,13 +132,13 @@ function submitNews(event) {
 
   const actions = {
     create: () => {
-      createNews(formData, loadNewsData);
+      if (user.accessLevel === AUTHOR_ACCESS_LEVEL) formData.authorId = user.id;
+      createEndpointData(NEWS_ENDPOINT, formData, loadNewsData);
       newsForm.reset();
     },
     update: () => {
       const newsId = newsFormElements["id"].value;
-
-      updateNews(Number(newsId), formData, loadNewsData);
+      updateEndpointDataById(NEWS_ENDPOINT, Number(newsId), formData, loadNewsData);
     },
   };
 
@@ -158,15 +149,22 @@ function changeModalData({ relatedTarget }) {
   const actionType = relatedTarget.getAttribute("data-action-type");
   const modalTitle = newsModal.querySelector(".modal-title");
   const formRestrictedData = document.getElementById("restrictedData");
+  const authorRow = document.getElementById("authorRow");
+  const authorSelect = document.getElementById("author");
 
   const actions = {
     create: () => {
       modalTitle.innerText = "Cadastrar Notícia";
       formRestrictedData.setAttribute("hidden", "");
+      if (user.accessLevel === AUTHOR_ACCESS_LEVEL) authorRow.setAttribute("hidden", "");
     },
     update: () => {
       modalTitle.innerText = "Editar Notícia";
       formRestrictedData.removeAttribute("hidden");
+      if (user.accessLevel === AUTHOR_ACCESS_LEVEL) {
+        authorRow.removeAttribute("hidden");
+        authorSelect.setAttribute("disabled", "");
+      }
     },
   };
 
@@ -174,13 +172,11 @@ function changeModalData({ relatedTarget }) {
   newsFormElements["submit"].setAttribute("data-action-type", actionType);
 }
 
-const getFormattedDate = () => new Date().toLocaleString().replace(",", "");
-
 function getFormData() {
-  const date = getFormattedDate();
+  const date = getDateTime();
 
   return {
-    author: newsFormElements["author"].value,
+    authorId: newsFormElements["author"].value,
     title: newsFormElements["title"].value,
     subtitle: newsFormElements["subtitle"].value,
     description: newsFormElements["description"].value,
@@ -197,22 +193,38 @@ function getFormData() {
 
 function loadNewsData(selectedTags = null) {
   const newsContainer = document.getElementById("newsContainer");
+  const authorSelect = document.getElementById("author");
+  const authorSelected = authorSelect.value;
 
   newsContainer.innerHTML = "";
+  authorSelect.innerHTML = "";
   $("#tags").empty().trigger("change");
 
-  getNews((news) => {
+  getEndpointData(`${NEWS_ENDPOINT}?_expand=author`, (news) => {
+    const authors = [];
+    let tags = [];
+
     news
-      .reduce((accTags, newsData) => {
+      .forEach((newsData) => {
         newsContainer.append(createNewsCard(newsData));
-        return Array.from(new Set([...accTags, ...newsData.tags]));
-      }, [])
-      .forEach((tagName) => {
-        const tagId = tagName;
-        $("#tags")
-          .append(new Option(tagName, tagId, false, false))
-          .trigger("change");
+        tags = Array.from(new Set([...tags, ...newsData.tags]));
+        if (!authors.some(({ id }) => id === newsData.author.id)) authors.push(newsData.author);
       });
+
+    tags.forEach((tagName) => {
+      const tagId = tagName;
+      $("#tags")
+        .append(new Option(tagName, tagId, false, false))
+        .trigger("change");
+    });
+
+    authors.forEach((author) => {
+      const authorOption = createCustomElement("option", undefined, author.name, { value: author.id });
+      authorSelect.append(authorOption);
+    });
+
+    authorSelect.value = authorSelected;
+    if (user.accessLevel === AUTHOR_ACCESS_LEVEL) authorSelect.value = user.id;
 
     $("#tags").val(selectedTags).trigger("change");
   });
@@ -231,6 +243,7 @@ function init() {
   loadNewsData();
 }
 
-window.onload = () => {
+window.onload = async () => {
+  user = await redirectUnauthorized(AUTHOR_ACCESS_LEVEL);
   init();
 };
