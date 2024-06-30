@@ -56,7 +56,7 @@ export function updateEndpointDataById(endpoint, id, data, dataRenderer, customM
         .then(_ => {
             displayMessage("Dados alterados com sucesso");
             if (dataRenderer)
-                dataRenderer();
+                dataRenderer(data?.tags);
         })
         .catch(error => {
             console.error('Erro ao atualizar dados:', error);
