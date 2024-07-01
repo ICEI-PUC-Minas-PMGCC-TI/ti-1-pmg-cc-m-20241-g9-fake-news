@@ -1,0 +1,24 @@
+.custom-tags-container {
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  top: -1.6em;
+  right: -1px;
+}
+
+.custom-tags {
+  padding: 2px 15px;
+  border-width: 1px;
+  border-style: solid;
+  text-transform: uppercase;
+}
+
+.custom-tags:first-of-type {
+  border-radius: 15px 0 0 0;
+}
+
+.card {
+  text-decoration: none;
+  border-top-right-radius: 0px;
+}
