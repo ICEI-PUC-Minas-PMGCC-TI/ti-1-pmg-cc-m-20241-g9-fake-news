@@ -19,5 +19,6 @@
 }
 
 .card {
+  text-decoration: none;
   border-top-right-radius: 0px;
 }

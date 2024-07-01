@@ -5,15 +5,15 @@ import {
   updateEndpointDataById,
   deleteEndpointDataById,
 } from './api.js';
-import { createCustomElement } from '../utils/elements.js';
+import { createCustomElement, createNavbar } from '../utils/elements.js';
 import { decrypt, encrypt } from '../utils/encryption.js';
 import { getAgeFromDate } from '../utils/utility.js';
 import { redirectUnauthorized } from './login.js';
 
 
-const authorForm = document.getElementById("authorForm");
+const authorForm = document.getElementById("registerForm");
 const authorFormElements = authorForm.elements;
-const authorModal = document.getElementById("authorModal");
+const authorModal = document.getElementById("registerModal");
 
 async function fillFormWithAuthorData(authorData) {
   authorFormElements["id"].value = authorData.id;
@@ -47,7 +47,7 @@ function createAuthorCard(authorData) {
   const liAuthorEmail = createCustomElement("li", undefined, `<b>Email:</b> ${authorData.email}`);
   const pAuthorDescription = createCustomElement("p", ["card-text"], authorData.description);
   const divButtonGroup = createCustomElement("div", ["btn-group"], null, { role: "group" });
-  const buttonEdit = createCustomElement("button", ["btn", "btn-primary"], "Editar", { type: "button" }, { "data-bs-toggle": "modal", "data-bs-target": "#authorModal", "data-action-type": "update" });
+  const buttonEdit = createCustomElement("button", ["btn", "btn-primary"], "Editar", { type: "button" }, { "data-bs-toggle": "modal", "data-bs-target": "#registerModal", "data-action-type": "update" });
   const buttonDelete = createCustomElement("button", ["btn", "btn-danger"], "Excluir", { type: "button" });
 
   // Events
@@ -162,6 +162,8 @@ function init() {
 }
 
 window.onload = () => {
-  redirectUnauthorized(1);
+  const user = redirectUnauthorized(1);
+  const main = document.getElementById("main");
+  main.innerHTML = createNavbar({ singular: "Autor", plural: "autores" }, user?.accessLevel) + main.innerHTML;
   init();
 };

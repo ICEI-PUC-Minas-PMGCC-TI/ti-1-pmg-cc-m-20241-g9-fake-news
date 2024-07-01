@@ -12,3 +12,7 @@ export function getAgeFromDate(dateString) {
 export function getDateTime(date = new Date()) {
   return `${date.toISOString().split('T')[0]} ${date.toTimeString().split(' ')[0]}`;
 }
+
+export function getFormattedDate(dateString) {
+  return new Date(dateString).toLocaleString().replace(",", "").split(" ")[0];
+}
