@@ -1,13 +1,13 @@
 import { AUTHOR_ACCESS_LEVEL, MANAGER_ACCESS_LEVEL, NEWS_ENDPOINT } from '../utils/constants.js';
-import { createCustomElement } from '../utils/elements.js';
+import { createCustomElement, createNavbar } from '../utils/elements.js';
 import { getDateTime } from '../utils/utility.js';
 import { createEndpointData, deleteEndpointDataById, getEndpointData, updateEndpointDataById } from './api.js';
 import { redirectUnauthorized } from './login.js';
 
 let user = {};
-const newsForm = document.getElementById("newsForm");
+const newsForm = document.getElementById("registerForm");
 const newsFormElements = newsForm.elements;
-const newsModal = document.getElementById("newsModal");
+const newsModal = document.getElementById("registerModal");
 
 function fillFormWithNewsData(newsData) {
   newsFormElements["id"].value = newsData.id;
@@ -43,12 +43,12 @@ function createNewsCard(newsData) {
   const h5NewsTitle = createCustomElement("h5", ["card-title"], newsData.title);
   const pNewsDescription = createCustomElement("p", ["card-text"], newsData.description);
   const pNewsDates = createCustomElement("p", ["card-text", "d-flex", "align-items-center"]);
-  const smallNewsCreationDate = createCustomElement("small", ["text-body-secondary"], `Criado em: ${newsData.createdAt} por ${newsData.author.name}`);
+  const smallNewsCreationDate = createCustomElement("small", ["text-body-secondary"], `Criado em ${newsData.createdAt} por ${newsData.author.name}`);
   const spanNewsDateDivider = createCustomElement("span", ["flex-grow-1", "mx-5", "border-bottom", "border-black"]);
-  const smallNewsUpdateDate = createCustomElement("small", ["text-body-secondary"], `Atualizado em: ${newsData.updatedAt} por ${newsData.author.name}`);
+  const smallNewsUpdateDate = createCustomElement("small", ["text-body-secondary"], `Atualizado em ${newsData.updatedAt} por ${newsData.author.name}`);
   const divCategoryTags = createCustomElement("div", ["col-sm-12", "d-flex", "flex-wrap", "gap-2"]);
   const divButtonGroup = createCustomElement("div", ["btn-group"], undefined, { role: "group" });
-  const buttonEdit = createCustomElement("button", ["btn", "btn-primary"], "Editar", { type: "button" }, { "data-bs-toggle": "modal", "data-bs-target": "#newsModal", "data-action-type": "update" });
+  const buttonEdit = createCustomElement("button", ["btn", "btn-primary"], "Editar", { type: "button" }, { "data-bs-toggle": "modal", "data-bs-target": "#registerModal", "data-action-type": "update" });
   const buttonDelete = createCustomElement("button", ["btn", "btn-danger"], "Excluir", { type: "button" });
 
   newsData.tags.forEach((tag) => {
@@ -245,5 +245,7 @@ function init() {
 
 window.onload = async () => {
   user = await redirectUnauthorized(AUTHOR_ACCESS_LEVEL);
+  const main = document.getElementById("main");
+  main.innerHTML = createNavbar({ singular: "Notícia", plural: "notícias" }, user?.accessLevel) + main.innerHTML;
   init();
 };

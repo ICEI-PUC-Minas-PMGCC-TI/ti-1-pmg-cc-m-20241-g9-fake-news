@@ -25,11 +25,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+    
     <script
       src="https://cdn.tiny.cloud/1/fkyab2ggc0mg4krkk4hry2smlgsxv4al2vgbefddj0bgx53i/tinymce/7/tinymce.min.js"
       referrerpolicy="origin"
@@ -42,7 +38,7 @@
   <body class="bg-light">
     <div
       class="modal fade"
-      id="newsModal"
+      id="registerModal"
       tabindex="-1"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -59,7 +55,7 @@
             </h5>
             <button
               type="reset"
-              form="newsForm"
+              form="registerForm"
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
@@ -67,7 +63,7 @@
           </div>
 
           <div class="modal-body">
-            <form id="newsForm">
+            <form id="registerForm">
               <div class="form-group row">
                 <div class="col-sm-4">
                   <small>(*) Campos obrigatórios</small>
@@ -162,7 +158,7 @@
                 <div class="col-sm">
                   <label for="image">Link da Imagem (*)</label>
                   <input
-                    type="text"
+                    type="url"
                     class="form-control"
                     id="image"
                     name="image"
@@ -239,19 +235,19 @@
           <div class="modal-footer">
             <button
               type="reset"
-              form="newsForm"
+              form="registerForm"
               class="btn btn-danger"
               data-bs-dismiss="modal"
             >
               Fechar
             </button>
-            <button type="reset" form="newsForm" class="btn btn-secondary">
+            <button type="reset" form="registerForm" class="btn btn-secondary">
               Limpar formulário
             </button>
             <button
               type="submit"
               name="submit"
-              form="newsForm"
+              form="registerForm"
               class="btn btn-primary"
             >
               Salvar notícia
@@ -261,27 +257,8 @@
       </div>
     </div>
 
-    <div class="container-fluid px-0">
-      <div
-        class="d-flex flex-wrap justify-content-around align-items-center position-sticky top-0 z-3 pb-3 pt-3 mb-5 bg-white"
-      >
-        <div class="col-md-4">
-          <h1>Gerenciamento de notícias</h1>
-        </div>
-        <div class="col-md-2 text-center">
-          <button
-            type="reset"
-            form="newsForm"
-            class="btn btn-success"
-            data-bs-toggle="modal"
-            data-bs-target="#newsModal"
-            data-action-type="create"
-          >
-            Cadastrar Notícia
-          </button>
-        </div>
-      </div>
-      <div class="container">
+    <div class="container-fluid px-0" id="main">
+      <div class="container mt-5 pt-5" style="margin-top: 4rem !important">
         <div
           id="msgContainer"
           class="d-flex flex-column position-fixed bottom-0"
@@ -297,7 +274,11 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="../assets/libraries/select2/pt-BR.js"></script>
     <script src="../assets/libraries/select2/select2Config.js"></script>

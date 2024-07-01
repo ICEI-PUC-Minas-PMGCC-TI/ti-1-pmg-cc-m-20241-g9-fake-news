@@ -3,7 +3,7 @@ import { createCustomElement } from '../utils/elements.js';
 import { getEndpointData } from './api.js';
 import { getFormattedDate } from '../utils/utility.js';
 
-function createNewsList(newsData) {
+export function createNewsList(newsData) {
   // Card Div
   const anchorCard = createCustomElement("a", ["card", "mb-3", "position-relative"], undefined, { href: `newsInternal.html?id=${newsData.id}` });
 
@@ -78,9 +78,20 @@ function loadNewsData() {
 
   newsContainer.innerHTML = "";
 
-  getEndpointData(`${NEWS_ENDPOINT}`, (news) => {
-    news.forEach((newsData) => { newsContainer.append(createNewsList(newsData)); });
-  });
+  getEndpointData(`${NEWS_ENDPOINT}`, appendAndSortNews(newsContainer));
+}
+
+export function appendAndSortNews(appendTo) {
+  return (news) => {
+    news
+      .sort((newsA, newsB) => {
+        if (newsA.featured && newsB.featured) return newsB.views - newsA.views;
+        if (newsA.featured) return -1;
+        if (newsB.featured) return 1;
+        return newsB.views - newsA.views;
+      })
+      .forEach((newsData) => { appendTo.append(createNewsList(newsData)); });
+  }
 }
 
 function init() {

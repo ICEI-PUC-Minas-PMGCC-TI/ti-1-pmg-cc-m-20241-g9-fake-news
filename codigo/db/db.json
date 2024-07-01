@@ -18,7 +18,7 @@
       "description": "Com uma vasta rede de contatos e uma compreensão profunda dos meandros da política brasileira, meu trabalho como correspondente político é marcado pela precisão e imparcialidade. Ao longo de 20 anos de carreira, tenho fornecido análises detalhadas e comentários perspicazes que ajudam o público a entender as complexidades do cenário político nacional. Respeitado tanto por colegas quanto por figuras políticas, meu compromisso com a verdade e a transparência é inabalável. Fora do trabalho, adoro jogar xadrez e caminhar no parque com minha família.",
       "image": "https://media.gettyimages.com/id/99860818/pt/foto/turin-italy-the-singer-of-the-group-maumau-and-journalist-luca-morino-poses-for-a-portraits.jpg?s=612x612&w=0&k=20&c=aY6qJeB3152N_bf61JhklDNp4hG86JIVJezJ1Fdo7vg=",
       "email": "pedroHSouza@gmail.com",
-      "password": "{\"salt\":\"3fqk1qp+D8jWzXgdJ+kh4Q==\",\"iv\":\"RBXedLtszCBOo1rb\",\"cipher\":\"A0az8HAC0U3KYt1yDq4it5Xugu6LONhIiM9aPA==\"}",
+      "password": "{\"salt\":\"keQ41oHuDTUy5nsr0bRaSg==\",\"iv\":\"4ZPzNAiBbk3L1ZaW\",\"cipher\":\"mZhD/YOGqRe14W0wm5vuFGKR1fgd56KIJnRsDg==\"}",
       "accessLevel": 2,
       "id": 2
     },
@@ -64,7 +64,7 @@
       "id": 1
     },
     {
-      "authorId": 2,
+      "authorId": 3,
       "title": "Mudanças climáticas: ursos polares podem se extinguir mais rápido do que se pensava, diz estudo",
       "subtitle": "Nova pesquisa sobre populações de ursos polares e impactos das mudanças climáticas",
       "image": "https://i.guim.co.uk/img/media/fdd4d6106dd0b6653e4ca0168472df3cb6455bd4/0_62_5472_3283/5472.jpg?width=460&quality=85&auto=format&fit=max&s=c842933e689461acb86800b6f094d8a6",
@@ -83,7 +83,7 @@
       "id": 2
     },
     {
-      "authorId": 3,
+      "authorId": 2,
       "title": "Número global de mortes por COVID-19 ultrapassa 3 milhões enquanto esforços de vacinação continuam",
       "subtitle": "Um marco na pandemia em curso e nas campanhas globais de vacinação",
       "image": "https://static.srpcdigital.com/styles/1037xauto/public/2021/04/06/commuters_wearing_masks_due_to_the_covid-19_pandemic_crowd_a_public_rapid_transit_bus_brt_in_rio_de_janeiro_brazil_tuesday_march_30_2021._ap.jpg",
@@ -100,6 +100,26 @@
       "createdAt": "2021-04-19 08:30:45",
       "updatedAt": "2024-05-17 20:45:39",
       "id": 3
+    }
+  ],
+  "partners": [
+    {
+      "name": "G1",
+      "website": "https://g1.globo.com/",
+      "image": "https://s.glbimg.com/jo/g1/static/live/imagens/img_facebook.png?g1",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "CNN",
+      "website": "https://www.cnnbrasil.com.br/",
+      "image": "https://yt3.googleusercontent.com/ytc/AIdro_ndPKZMHqFQNc-W3JxlLh_POjtSMcKusAaagJRjtpDO6hU=s900-c-k-c0x00ffffff-no-rj"
+    },
+    {
+      "id": 3,
+      "name": "BBC",
+      "website": "https://www.bbc.com/portuguese",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d4bb/live/3995b870-5ee1-11ee-93e8-5d16174eb488.png"
     }
   ]
 }
